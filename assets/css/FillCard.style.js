@@ -26,14 +26,14 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 8,
     marginBottom: 15,
-    marginHorizontal:30,
+    marginHorizontal: 30,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: 'silver',
   },
-  validArea:{
-    flexDirection:"row",
-    marginHorizontal:30
+  validArea: {
+    flexDirection: 'row',
+    marginHorizontal: 30,
   },
 
   validInput: {

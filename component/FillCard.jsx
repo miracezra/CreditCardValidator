@@ -23,10 +23,12 @@ const FillCard = () => {
     //Alert Fonksiyonunu daha kısa çağrmak için bir fonksiyon
     const alertFunc = (title, message) => {
         Alert.alert(title, message, [{
-            text: "Anladım", onPress: () => console.log("Uyarı Kapatıldı")
+            text: "Anladım",
         }])
     }
-    const clearInputFields = () => {
+    //#endregion
+    //#region Giriş alanlarını ve kartı temizleme fonksiyonu
+    const clearFields = () => {
         setNewData({
             cardNumber: '',
             name: '',
@@ -40,8 +42,8 @@ const FillCard = () => {
         setValidYear('')
         setName('')
     };
-
     //#endregion
+
     //#region Tüm dataları atama kısmı
     const handleUpdateData = () => {
         //boş geçilemez kontrolümü yapıyorum
@@ -137,7 +139,7 @@ const FillCard = () => {
                 </TouchableOpacity>
             </LinearGradient>
             <LinearGradient style={styles.validateButton} colors={['#454598', '#0b93af']}>
-                <TouchableOpacity onPress={clearInputFields} >
+                <TouchableOpacity onPress={clearFields} >
                     <Text style={styles.validateButtonText}>Kart Bilgilerimi Temizle</Text>
                 </TouchableOpacity>
             </LinearGradient>
