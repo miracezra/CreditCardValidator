@@ -20,7 +20,7 @@ const FillCard = () => {
 
     //#region Alert Fonksiyonu
     //Alert Fonksiyonunu daha kısa çağrmak için bir fonksiyon
-    const errorFunc = (title, message) => {
+    const alertFunc = (title, message) => {
         Alert.alert(title, message, [{
             text: "Anladım", onPress: () => console.log("Alert Kapatıldı")
         }])
@@ -32,76 +32,84 @@ const FillCard = () => {
         if (newData.cardNumber != '' && newData.name != '' && newData.validMonth != '' && newData.validYear != '' && newData.cvv != '') {
             //kredi Kartı numarası doğru ise diğer atama işlemlerini yapıyor
             if (validateCreditCard(newData.cardNumber) == true) {
-                setCardNumber(newData.cardNumber);
+
+                if (newData.validMonth <= 12 && newData.validMonth >= 1 && newData.validYear >= 2023 && newData.validYear <= 2033) {
+                    setCardNumber(newData.cardNumber);
+                    setCvv(newData.cvv);
+                    setName(newData.name);
+                    alertFunc("Geçerli Kart Numarası", "Kart Numaranız Geçerli")
+                }
 
                 //ay Geçerliliğini 1-12 arasında kontrol ettim
-                newData.validMonth <= 12 && newData.validMonth >= 1 ? setValidMonth(newData.validMonth) : errorFunc('Ay Değeri Hatalı', 'Ay değerini 1-12 arasında giriniz')
+                newData.validMonth <= 12 && newData.validMonth >= 1 ? setValidMonth(newData.validMonth) : alertFunc('Ay Değeri Hatalı', 'Ay değerini 1-12 arasında giriniz')
 
                 //10 yıllık bir kart geçerlilik süresi tanımladım internette baktığımda farklı tarihler gördüm 
-                newData.validYear >= 2023 && newData.validYear <= 2033 ? setValidYear(newData.validYear) : errorFunc('Yıl Değer Girişi', 'Yıl Değerini 4 haneli ve 2023-2033 Tarihleri Arasında Giriniz')
+                newData.validYear >= 2023 && newData.validYear <= 2033 ? setValidYear(newData.validYear) : alertFunc('Yıl Değer Girişi', 'Yıl Değerini 4 haneli ve 2023-2033 Tarihleri Arasında Giriniz')
 
-                setCvv(newData.cvv);
-                setName(newData.name);
             }
             else {
-                errorFunc('Kart Numarası Hatası', 'Kredi Kart Numaranız Hatalı')
+                alertFunc('Kart Numarası Hatası', 'Kredi Kart Numaranız Hatalı')
 
             }
             setIsFlipped(false)
         }
         else {
-            errorFunc('Boş Bırakılamaz', 'Lütfen Tüm Alanları Doğru ve Eksiksiz Doldurduğunuzdan Emin olunuz')
+            alertFunc('Boş Bırakılamaz', 'Lütfen Tüm Alanları Doğru ve Eksiksiz Doldurduğunuzdan Emin olunuz')
         }
     };
     //#endregion
     return (
-        <View style={styles.container}>
-            <Text style={styles.header}>Kart Bilgileriniz</Text>
-            <TextInput style={[styles.textInput]}
-                placeholder={"Kart Numaranızı Giriniz"}
-                keyboardType='number-pad'
-                maxLength={16}
-                onChangeText={(value) => setNewData({ ...newData, cardNumber: value })}
-                returnKeyType="done"
-            />
+        <>
+            <View style={styles.container}>
+                <Text style={styles.header}>Kart Bilgileriniz</Text>
+                <View style={styles.inputArea}>
+                    <TextInput style={[styles.textInput]}
+                        placeholder={"Kart Numaranızı Giriniz"}
+                        keyboardType="number-pad"
+                        maxLength={16}
+                        onChangeText={(value) => setNewData({ ...newData, cardNumber: value })}
+                        returnKeyType="done"
+                    />
 
-            <TextInput
-                style={styles.textInput}
-                placeholder={"Adınızı Giriniz"}
-                keyboardType="name-phone-pad"
-                onChangeText={(value) => setNewData({ ...newData, name: value })}
-                returnKeyType="done"
-            />
-            <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.validInput}
-                    placeholder={"Ay"}
-                    keyboardType="number-pad"
-                    onChangeText={(value) => setNewData({ ...newData, validMonth: value })}
-                    returnKeyType="done"
-                    maxLength={2}
-                />
-                <TextInput style={[styles.validInput, { marginLeft: 5 }]}
-                    placeholder={"Yıl 2023"}
-                    keyboardType="number-pad"
-                    onChangeText={(value) => setNewData({ ...newData, validYear: value })}
-                    returnKeyType="done"
-                    maxLength={4}
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder={"Adınızı Giriniz"}
+                        keyboardType="name-phone-pad"
+                        onChangeText={(value) => setNewData({ ...newData, name: value })}
+                        returnKeyType="done"
+                    />
+                    <View style={{ flexDirection: 'row' }}>
+                        <TextInput style={styles.validInput}
+                            placeholder={"Ay"}
+                            keyboardType="number-pad"
+                            onChangeText={(value) => setNewData({ ...newData, validMonth: value })}
+                            returnKeyType="done"
+                            maxLength={2}
+                        />
+                        <TextInput style={[styles.validInput, { marginLeft: 5 }]}
+                            placeholder={"Yıl 2023"}
+                            keyboardType="number-pad"
+                            onChangeText={(value) => setNewData({ ...newData, validYear: value })}
+                            returnKeyType="done"
+                            maxLength={4}
 
-                />
-                <Text style={styles.cvvLabel}>Cvv</Text>
-                <TextInput style={[styles.validInput, { marginLeft: 15 }]}
-                    onFocus={() => { setIsFlipped(true) }}
-                    onBlur={() => { setIsFlipped(false) }}
-                    keyboardType="number-pad"
-                    maxLength={3}
-                    onChangeText={(value) => setNewData({ ...newData, cvv: value })}
-                    returnKeyType="done"
-                />
+                        />
+                        <Text style={styles.cvvLabel}>Cvv</Text>
+                        <TextInput style={[styles.validInput, { marginLeft: 15 }]}
+                            onFocus={() => { setIsFlipped(true) }}
+                            onBlur={() => { setIsFlipped(false) }}
+                            keyboardType="number-pad"
+                            maxLength={3}
+                            onChangeText={(value) => setNewData({ ...newData, cvv: value })}
+                            returnKeyType="done"
+                        />
+                    </View>
+                </View>
             </View>
             <TouchableOpacity style={styles.validateButton} onPress={handleUpdateData} >
                 <Text style={styles.validateButtonText}>Kart Bilgilerimi Doğrula</Text>
             </TouchableOpacity>
-        </View>
+        </>
     );
 }
 

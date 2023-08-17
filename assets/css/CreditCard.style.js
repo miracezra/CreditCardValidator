@@ -1,11 +1,11 @@
 import { Dimensions, StyleSheet } from "react-native"
 
 const width = Dimensions.get('screen').width
-const height = Dimensions.get('screen').height
+
 export const styles = StyleSheet.create({
     container: {
         width: width - 20,
-        height: height / 4,
+        height: (width-20) / 1.586,
         borderRadius: 10,
         flexDirection: "column",
         justifyContent: "space-between"
@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
         height: 35,
         backgroundColor: "gray",
         top: 55,
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
     },
     cvvNumberText: {
         fontSize: 25,
@@ -82,7 +82,6 @@ export const styles = StyleSheet.create({
     cvvTextArea: {
         flexDirection: 'row',
         width: width / 2,
-
     }
 
 })

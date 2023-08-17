@@ -1,30 +1,41 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
 const width = Dimensions.get('screen').width;
-const height = Dimensions.get('screen').height;
 export const styles = StyleSheet.create({
   container: {
-    height: height / 2,
+    margin: 15,
+    height: 'auto',
+    width: width - 30,
   },
   header: {
     marginBottom: 15,
     fontSize: 25,
     fontWeight: 'bold',
     color: 'rgb(84,173,192)',
+    backgroundColor: 'white',
+  },
+  inputArea: {
+    backgroundColor: 'rgb(84,173,192)',
+    borderRadius: 10,
+    paddingTop:15
   },
   textInput: {
-    width: width - 30,
+    width: width - 40,
     height: 35,
-    backgroundColor: 'silver',
+    left: 5,
+    backgroundColor: 'white',
     borderRadius: 12,
     marginBottom: 15,
     paddingLeft: 8,
+    borderWidth: 2,
   },
   validInput: {
     width: width / 5,
-    backgroundColor: 'silver',
+    backgroundColor: 'white',
     height: 35,
+    left: 5,
     borderRadius: 12,
+    borderWidth: 2,
     marginBottom: 15,
     paddingLeft: 4,
     justifyContent: 'center',
@@ -41,6 +52,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    borderWidth: 2,
+    marginBottom: 10,
+    width: width - 30,
   },
   validateButtonText: {
     color: 'black',
