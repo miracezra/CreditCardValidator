@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   textInput: {
     width: width - 100,
-    height: 45,
+    height: 40,
     left: 5,
     backgroundColor: 'white',
     paddingLeft: 8,
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   validInput: {
     width: width / 5,
     backgroundColor: 'white',
-    height: 45,
+    height: 40,
     left: 5,
     borderRadius: 12,
     borderWidth: 1,
@@ -55,8 +55,7 @@ export const styles = StyleSheet.create({
     marginRight: 11,
   },
   validateButton: {
-    backgroundColor: 'rgb(84,173,192)',
-    height: 30,
+    height: 45,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
@@ -66,7 +65,7 @@ export const styles = StyleSheet.create({
     width: width - 30,
   },
   validateButtonText: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
   },
 });

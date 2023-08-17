@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useData } from '../context/DataContext';
 import validateCreditCard from "test-creditcardvalidator" //kendi yazdığım validasyonum
 import { styles } from '../assets/css/FillCard.style';
+import LinearGradient from 'react-native-linear-gradient';
 //#endregion
 const FillCard = () => {
 
@@ -96,7 +97,7 @@ const FillCard = () => {
                         value={newData.name}
 
                     />
-                    <View style={ styles.validArea}>
+                    <View style={styles.validArea}>
                         <TextInput style={styles.validInput}
                             placeholder={"Ay"}
                             keyboardType="number-pad"
@@ -130,12 +131,17 @@ const FillCard = () => {
                     </View>
                 </View>
             </View>
-            <TouchableOpacity style={styles.validateButton} onPress={handleUpdateData} >
-                <Text style={styles.validateButtonText}>Kart Bilgilerimi Doğrula</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.validateButton} onPress={clearInputFields} >
-                <Text style={styles.validateButtonText}>Kart Bilgilerimi Temizle</Text>
-            </TouchableOpacity>
+            <LinearGradient style={styles.validateButton} colors={['#454598', '#0b93af']}>
+                <TouchableOpacity onPress={handleUpdateData} >
+                    <Text style={styles.validateButtonText}>Kart Bilgilerimi Doğrula</Text>
+                </TouchableOpacity>
+            </LinearGradient>
+            <LinearGradient style={styles.validateButton} colors={['#454598', '#0b93af']}>
+                <TouchableOpacity onPress={clearInputFields} >
+                    <Text style={styles.validateButtonText}>Kart Bilgilerimi Temizle</Text>
+                </TouchableOpacity>
+            </LinearGradient>
+
         </>
     );
 }
