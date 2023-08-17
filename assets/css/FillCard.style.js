@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     color: 'rgb(84,173,192)',
-    backgroundColor: 'white',
   },
   inputArea: {
     backgroundColor: 'rgb(84,173,192)',
@@ -30,6 +29,7 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: 'silver',
+    color:"black"
   },
   validArea: {
     flexDirection: 'row',
@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 4,
     justifyContent: 'center',
     alignItems: 'center',
+    color:"black"
   },
   cvvLabel: {
     top: 15,
