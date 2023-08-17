@@ -489,6 +489,7 @@
 				DEVELOPMENT_TEAM = 4MF5D5TZM4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CreditCardApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Kredi Kart Validasyon";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,6 +517,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4MF5D5TZM4;
 				INFOPLIST_FILE = CreditCardApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Kredi Kart Validasyon";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

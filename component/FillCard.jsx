@@ -22,9 +22,24 @@ const FillCard = () => {
     //Alert Fonksiyonunu daha kısa çağrmak için bir fonksiyon
     const alertFunc = (title, message) => {
         Alert.alert(title, message, [{
-            text: "Anladım", onPress: () => console.log("Alert Kapatıldı")
+            text: "Anladım", onPress: () => console.log("Uyarı Kapatıldı")
         }])
     }
+    const clearInputFields = () => {
+        setNewData({
+            cardNumber: '',
+            name: '',
+            validMonth: '',
+            validYear: '',
+            cvv: '',
+        });
+        setCardNumber('')
+        setCvv('')
+        setValidMonth('')
+        setValidYear('')
+        setName('')
+    };
+
     //#endregion
     //#region Tüm dataları atama kısmı
     const handleUpdateData = () => {
@@ -69,6 +84,7 @@ const FillCard = () => {
                         maxLength={16}
                         onChangeText={(value) => setNewData({ ...newData, cardNumber: value })}
                         returnKeyType="done"
+                        value={newData.cardNumber}
                     />
 
                     <TextInput
@@ -77,14 +93,18 @@ const FillCard = () => {
                         keyboardType="name-phone-pad"
                         onChangeText={(value) => setNewData({ ...newData, name: value })}
                         returnKeyType="done"
+                        value={newData.name}
+
                     />
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={ styles.validArea}>
                         <TextInput style={styles.validInput}
                             placeholder={"Ay"}
                             keyboardType="number-pad"
                             onChangeText={(value) => setNewData({ ...newData, validMonth: value })}
                             returnKeyType="done"
                             maxLength={2}
+                            value={newData.validMonth}
+
                         />
                         <TextInput style={[styles.validInput, { marginLeft: 5 }]}
                             placeholder={"Yıl 2023"}
@@ -92,6 +112,8 @@ const FillCard = () => {
                             onChangeText={(value) => setNewData({ ...newData, validYear: value })}
                             returnKeyType="done"
                             maxLength={4}
+                            value={newData.validYear}
+
 
                         />
                         <Text style={styles.cvvLabel}>Cvv</Text>
@@ -102,12 +124,17 @@ const FillCard = () => {
                             maxLength={3}
                             onChangeText={(value) => setNewData({ ...newData, cvv: value })}
                             returnKeyType="done"
+                            value={newData.cvv}
+
                         />
                     </View>
                 </View>
             </View>
             <TouchableOpacity style={styles.validateButton} onPress={handleUpdateData} >
                 <Text style={styles.validateButtonText}>Kart Bilgilerimi Doğrula</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.validateButton} onPress={clearInputFields} >
+                <Text style={styles.validateButtonText}>Kart Bilgilerimi Temizle</Text>
             </TouchableOpacity>
         </>
     );

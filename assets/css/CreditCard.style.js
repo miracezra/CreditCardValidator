@@ -35,8 +35,9 @@ export const styles = StyleSheet.create({
     },
     cardNumberText: {
         fontSize: 25,
-        fontWeight: "bold",
-        left: 25
+        left: 25,
+        letterSpacing:3,
+        color:"white"
     },
     cardNameAndValid: {
         flexDirection: "row",
@@ -48,8 +49,11 @@ export const styles = StyleSheet.create({
     },
     cardNameText: {
         left: 15,
-        fontSize: 18,
-        fontWeight: "bold"
+        fontSize: 15,
+        letterSpacing:2,
+        color:"white",
+        width:width-145,
+
     },
     cardValid: {
         right: 15,
@@ -58,11 +62,13 @@ export const styles = StyleSheet.create({
     },
     validLabel: {
         fontSize: 16,
-        fontWeight: "bold"
+        color:"white",
+        letterSpacing:2
     },
     validDate: {
         fontSize: 14,
-        fontWeight: 'bold'
+        color:"white",
+        letterSpacing:2
     },
     cvv: {
         flexDirection: 'row',
